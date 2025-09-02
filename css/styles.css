@@ -1,0 +1,152 @@
+/* --- Variables y Estilos Globales --- */
+:root {
+    --color-principal: #007cf0;
+    --color-secundario: #ec0868;
+    --color-fondo: #edf0f4;
+    --color-texto: #0b2545;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Layout Principal con CSS Grid --- */
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto; /* Header, Nav, Main (flexible), Footer */
+    min-height: 100vh; /* Asegura que el footer se quede abajo */
+}
+
+/* --- Estilos de Componentes --- */
+header {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--color-secundario);
+}
+
+/* --- Barra de Navegación con Flexbox --- */
+nav {
+    background-color: #333;
+    padding: 15px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex; /* Activamos Flexbox */
+    justify-content: center; /* Centramos los elementos horizontalmente */
+    gap: 30px; /* Espacio entre los enlaces */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+nav ul li a:hover {
+    color: var(--color-secundario);
+}
+
+/* --- Contenido Principal y Galería de Productos con Grid --- */
+main {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: var(--color-principal);
+}
+
+section ul {
+    list-style: none;
+    display: grid; /* Activamos Grid para la lista de productos */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 25px; /* Espacio entre productos */
+}
+
+section ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section ul li:hover {
+    transform: translateY(-7px); /* Efecto de levantar la tarjeta */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* --- Selector Avanzado nth-child --- */
+section ul li:nth-child(odd) {
+    border-left: 5px solid var(--color-secundario);
+}
+
+section ul li:nth-child(even) {
+    border-left: 5px solid var(--color-principal);
+}
+
+section ul li img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- Media Queries para Diseño Responsivo --- */
+
+/* Para Tablets */
+@media (max-width: 768px) {
+    main h2 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column; /* Apila los enlaces de navegación */
+        gap: 15px;
+    }
+}
+
+/* Para Móviles */
+@media (max-width: 480px) {
+    body {
+        line-height: 1.5;
+    }
+    
+    main h2 {
+        font-size: 1.8em;
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    section ul {
+        grid-template-columns: 1fr; /* Una sola columna para los productos */
+    }
+}
